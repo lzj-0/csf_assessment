@@ -1,0 +1,2 @@
+# TODO: Task 1.1
+mongoimport --host=maglev.proxy.rlwy.net --port=36884 --db=restaurant --collection=menus --username=mongo --password=UQfLIIBVGyhSnkwrSGpJbaqMZSPdFPxC --type=json --jsonArray --file=data/menus.json --authenticationDatabase=admin

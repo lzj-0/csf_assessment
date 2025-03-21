@@ -1,0 +1,42 @@
+<div class="row mt-3">
+  <div class="col d-flex justify-content-between align-items-center">
+    <div class="fs-1 fw-bold text-primary">Menu ({{ totalCost | currency }})</div>
+    <div>
+      <button type="button" class="btn btn-primary" (click)="toConfirmation()" [disabled]="cartCount === 0">
+        Place Order ({{ cartCount }})
+      </button>
+    </div>
+  </div>
+</div>
+<!-- each row display a single mene item -->
+@for (menu of menus; track menu) {
+  <div class="row mb-2">
+    <div class="col">
+      <div class="menu-item">
+        <div>
+          <button type="button" class="btn btn-warning" (click)="removeFromCart(menu)">
+            <i class="bi bi-x-square"></i>
+          </button>
+        </div>
+        <div class="menu-details">
+          <div>Name: <span class="fw-bold"> {{ menu.name }} </span> </div>
+          <div>Description:
+            <span class="fst-italic">
+              {{ menu.description }}
+            </span>
+          </div>
+          <div>Price: <span class="fw-bold"> {{ menu.price | currency }} </span> </div>
+            @if (quantityMap.get(menu._id) !== 0) {
+              <div class="text-danger fw-bold">Quantity: {{ quantityMap.get(menu._id) }}</div>
+            }
+        </div>
+        <div class="menu-button-end">
+          <button type="button" class="btn btn-success" (click)="addToCart(menu)">
+            <i class="bi bi-plus-circle"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
